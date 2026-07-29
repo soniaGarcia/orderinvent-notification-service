@@ -1,0 +1,12 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot - NotificationServiceApplication",
+            "request": "launch",
+            "mainClass": "com.exam.notification.NotificationServiceApplication",
+            "projectName": "orderinvent-notification-service"
+        }
+    ]
+}
