@@ -5,7 +5,7 @@ spring:
   application:
     name: orderinvent-notification-service
   datasource:
-    url: jdbc:h2:mem:orderdb
+    url: jdbc:h2:mem:notificationdb
     driver-class-name: org.h2.Driver
     username: sa
     password: 
@@ -17,9 +17,11 @@ spring:
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
       ddl-auto: update
-  cloud:
-    compatibility-verifier:
-      enabled: false
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: notification-group
+      auto-offset-reset: earliest
 
 management:
   endpoints:
@@ -28,12 +30,12 @@ management:
         include: health, info, metrics, prometheus
   endpoint:
     health:
-      show-details: always  # Muestra el estado de DB, Kafka y espacio en disco
+      show-details: always
       probes:
-        enabled: true       # Habilita liveness y readiness (clave para AWS ECS)
+        enabled: true
   tracing:
     sampling:
-      probability: 1.0      # Captura el 100% de las trazas (ideal para POC/Dev)
+      probability: 1.0
 
 logging:
   pattern:
@@ -44,7 +46,3 @@ springdoc:
     path: /v3/api-docs
   swagger-ui:
     path: /swagger-ui.html
-
-inventory:
-  service:
-    url: http://localhost:8081/api/v1/inventory # URL del microservicio de inventario
