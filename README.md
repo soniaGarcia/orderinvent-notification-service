@@ -3,8 +3,8 @@
 Microservicio desacoplado de auditoría y notificaciones. Consume de forma asíncrona todos los eventos del dominio emitidos en el sistema para mantener la trazabilidad histórica del pedido y despachar alertas a clientes.
 
 ## 🚀 Tecnologías
-* **Runtime:** Java 21 / Spring Boot 3.x
-* **Base de Datos:** PostgreSQL (Aurora Serverless v2)
+* **Runtime:** Java 17 / Spring Boot 3.x
+* **Base de Datos:** H2
 * **Mensajería:** Apache Kafka (Consumer Group dedicado)
 
 ## ⚙️ Puerto y Endpoints
